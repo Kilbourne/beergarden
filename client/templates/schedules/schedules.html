@@ -1,0 +1,128 @@
+<template name="schedules">
+    
+
+    <div class="row">
+    <div class="col-xs-3 well" ></div>
+    {{#if dates}}
+    {{#each dates}}
+    <div class="col-xs-1">
+      {{date.getWeekDay}}, {{date.getDate}} {{date.getMonthName}}
+      <div class="add">
+         <button type="button" class="btn btn-default" data-toggle="modal" data-target="#insertUser">
+       <span class="glyphicon glyphicon-plus" aria-hidden="true" ></span> Add
+      </button> 
+    </div>
+      
+    
+    {{>displayDate day_schedule=this day_id=this._id}}
+    </div>
+    
+    {{/each }}
+    {{else}}
+      <div class="generate">
+         <button type="button" class="btn btn-default">
+       <span class="glyphicon glyphicon-plus" aria-hidden="true" ></span> Genera
+      </button> 
+    </div>
+    {{/if}}
+    <div class="col-xs-2 well" >
+      
+      {{#each workers}}
+        <img src="{{imageUrl}}"  class="img-responsive img-circle" style="width: 50px; height: 50px;">{{username}}
+      {{/each}}
+    </div>
+
+    </div>
+
+    {{>insertUserModal workers}}
+     
+</template>  
+
+<template name="displayDate">
+
+  <div class="well">
+
+   <h4>cassa</h4>
+    {{#each day_schedule.cash}}
+    <img src="{{imageUrl}}"  class="img-responsive img-circle" style="width: 30px; height: 30px;">
+    <h6>{{username}}</h6>
+    
+    <button class="delete" name="cash">&times;</button>
+    {{/each}}
+  </div>
+
+  <h4>bar</h4>
+    {{#each day_schedule.bar}}
+    
+    <img src="{{imageUrl}}"  class="img-responsive img-circle" style="width: 30px; height: 30px;">
+    <h6>{{username}}</h6>
+    <button class="delete" name="bar">&times;</button>
+    {{/each}}
+      
+  <h4>camerieri</h4>
+    {{#each day_schedule.waiters}}
+    <img src="{{imageUrl}}"  class="img-responsive img-circle" style="width: 30px; height: 30px;">
+    <h6>{{username}}</h6>
+    <button class="delete" name="waiters">&times;</button>
+    {{/each}}
+
+  <h4>cucina</h4>
+    {{#each day_schedule.kitchen}}
+    <img src="{{imageUrl}}"  class="img-responsive img-circle" style="width: 30px; height: 30px;">
+    <h6>{{username}}</h6>
+    <button class="delete" name="kitchen">&times;</button>
+    {{/each}}
+
+  <h4>porta</h4>
+    {{#each day_schedule.door}}
+    <img src="{{imageUrl}}"  class="img-responsive img-circle" style="width: 30px; height: 30px;">
+    <h6>{{username}}</h6>
+    <button class="delete" name="door">&times;</button>
+    {{/each}}
+  
+</template> 
+
+<template name="insertUserModal">
+  <div id="insertUser" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">Va a Fatikà</h4>
+        </div>
+        <div class="modal-body">
+         <form role="form" id="addWorker">
+           <div class="form-group">
+             <label for="sel1">Postazione:</label>
+             <select class="form-control" id="sel1" name="role">
+               <option value="cash">cassa</option>
+               <option value="bar">bar</option>
+               <option value="waiters">cameriere</option>
+               <option value="kitchen">cucina</option>
+               <option value="door">porta</option>
+
+             </select>
+
+           </div>
+           <div class="form-group">
+             <label for="sel2">Chi:</label>
+             <select class="form-control" id="sel2" name="username">
+                {{#each workers}}
+                  <option value="{{_id}}">{{username}}</option>
+                {{/each}}
+              
+             </select>
+           </div>
+           <button type="submit" class="btn btn-default " >Incatasta</button>
+         </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</template>

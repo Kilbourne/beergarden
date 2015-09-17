@@ -1,0 +1,86 @@
+ <template name="manageProducts">
+  <div class="container-fluid">
+    <form class="new-prod form-inline" role="form">
+     <input type="text" class="form-control" name="name"  placeholder="name" />
+     <input type="text" class="form-control" name="price" placeholder="price 4.5" />
+     <input type="text" class="form-control" name="image" placeholder="image" />
+     <input type="text" class="form-control" name="volume" placeholder="volume 0.2" />
+     <input type="text" class="form-control" name="type" placeholder="type" />
+     <input type="text" class="form-control" name="served" placeholder="served" />
+     <input type="text" class="form-control" name="menu_name" placeholder="menu_name" />
+     <input type="text" class="form-control" name="description" placeholder="description" />
+     <label >sellable</label>
+     <input type="checkbox" name="sellable" />
+     <input type="submit" value="Submit">
+    </form>
+    <br><br>
+    {{#each products}}
+       {{> product}}
+     {{/each}}
+  </div>
+</template>
+
+<template name="product">
+
+     
+   <form class="form-inline" role="form">
+    <div class="form-group">
+      <div class="col-xs-1">        
+         <input type="text" class="form-control" value="{{name}}" name="name"  placeholder="name">
+      </div>
+
+      <div class="col-xs-1">      
+       <input type="text" class="form-control" value="{{price}}" name="price" placeholder="price 4.5">
+      </div>
+
+      <div class="col-xs-1">
+        <input type="text" class="form-control" value="{{image}}" name="image" placeholder="image" >
+      </div>
+
+      <div class="col-xs-1">
+         <input type="text" class="form-control" value="{{volume}}" name="volume" placeholder="volume 0.2" >
+      </div>
+
+      <div class="col-xs-1">
+        <input type="text" class="form-control" name="type" value="{{type}}" placeholder="type" />
+      </div>
+
+      <div class="col-xs-1">
+        <input type="text" class="form-control" value="{{served}}" name="served"  placeholder="served" />
+      </div>
+
+      <div class="col-xs-1">
+        <input type="text" class="form-control" value="{{description}}" name="description"  placeholder="description"/>
+      </div>
+
+      <div class="col-xs-1">
+        <input type="text" class="form-control" value="{{menu_name}}" name="menu_name"  placeholder="menu name" />
+    
+      </div>
+       <div class="col-xs-1">       
+      </div>
+
+      <div class="col-xs-1">
+       
+        <label for="finished">finished</label>
+        <input type="checkbox" {{isfinished}}  id="finished" class="toggle-finished" />
+      </div>
+
+      <div class="col-xs-1">
+        <label for="sellable">sellable</label>
+
+        <input type="checkbox" {{issellable}} id="sellable" class="toggle-sellable" />
+      </div>
+
+     
+
+      <div class="col-xs-1">
+        <img src="/images/{{image}}"  class="img-responsive img-circle">
+        <button class="delete">&times;</button>
+      </div>
+
+      
+
+    </div>
+    </form> 
+ </template>

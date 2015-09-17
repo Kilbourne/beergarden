@@ -1,0 +1,25 @@
+<template name="navigation">
+  {{#if currentUser}}
+  <div class="row">
+    <div class="col-xs-6">
+      <ul class="list-inline">
+        <li><a href="{{pathFor route='home'}}">Home</a></li>
+        <li><a href="{{pathFor route='manageProducts'}}">manage_products</a></li>
+        <li><a href="{{pathFor route='orders'}}">orders</a></li>
+        <li><a href="{{pathFor route='schedules'}}">schedules</a></li>
+       
+        
+      </ul>
+    </div>
+    <div class="col-xs-6">
+     
+      
+      
+      
+    </div>
+  </div>
+  {{/if}}
+    
+
+    
+</template> 
